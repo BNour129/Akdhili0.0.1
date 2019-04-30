@@ -1,0 +1,38 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<!-- {% block home %}
+<header>
+  <h1>Hello {{ request.user }}</h1>
+</header>
+{% endblock %} -->
+<h1>Please Let Us Know More about You</h1>
+<div class="account-detail">
+    <div class="account">
+        <img src="{{ account.picture.url }}" />
+
+        <form class="" action="{% url 'accounts:details' %}" method="post">
+            {% csrf_token %}
+            <ul>
+              <li>
+                <p>Name </p><h2>{{ account.Name }}</h2>
+              </li>
+              <li>
+                <p>Last Name </p>
+                <h2>{{ account.lastname }}</h2>
+              </li>
+              <li>
+                <p>Account Types </p>
+                <h2>{{ account.account_type }}</h2>
+              </li>
+              <li>
+                <p>CIN </p>
+                <h2>{{ account.cin }}</h2>
+              </li>
+            </ul>
+            <!-- <h3>Written by {{ account.author.username }}</h3> -->
+            <input type="submit" value="save">
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+ <nav class="white, col-md-12, col-lg-12" role="navigation">
+         <div class="nav-wrapper container, col-md-12, col-lg-12">
+            <ul>
+             <li>
+              <div class="col-md-3" >
+                <a  href="{% url 'home' %}" class="brand-logo"><img class="logo-akdhili" src="{% static 'img/logo-akdhili.png' %}" alt="test"></a>
+              </div>
+             </li>
+
+             <li>
+              <div class="col-md-5" >
+               <nav>
+                 <div class="nav-wrapper">
+                 <form>
+                 <div class="input-field">
+                  <input id="search" type="search" required>
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                 </div>
+                 </form>
+                 </div>
+               </nav>
+              </div>
+            </li>
+
+            <li>
+              <div class="col-md-4" >
+               <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-default" style="margin-top:18%">Logout</button>
+                        </form>
+                    </li>
+                    <li><a href="{}" class="highlight">Check My Workflow</a></li>
+                    {% else %}
+                    <nav>
+                      <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                      <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+                      <li><a href="{% url 'pages:about' %}">About Us</a></li>
+                      <li><a href="{% url 'pages:contact' %}">Contact Us</a></li>
+                     <li><a href="{}">Join Us</a></li>
+                    </nav>
+                    {% endif %}
+                </ul>
+                <ul id="nav-mobile" class="sidenav">
+                  <li><a href="#">Mobile Link1</a></li>
+                  <li><a href="#">Mobile Link1</a></li>
+                  <li><a href="#">Mobile Link1</a></li>
+                </ul>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+               </nav>
+              </div>
+             </li>
+               
+            </ul>
+         </div>
+ </nav>
+
+  {% block content %}
+  {% endblock %}
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are making Carthage GREAT AGAIN !</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Akdhili</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/materialize.js' %}"></script>
+  <script src="{% static 'js/init.js'%}"></script>
+
+</body>
+</html>

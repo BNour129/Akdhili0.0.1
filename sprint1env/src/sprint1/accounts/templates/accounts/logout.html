@@ -1,0 +1,14 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+  <title>logout page</title>
+<body>
+  {% csrf_token %}
+  <h1>You've been logged out </h1>{{ request.user }}
+  <p>You can check our other stuff:</p>
+  <hr>
+  <a href="{% url 'pages:home' %}", value="Contact Us"></a>
+  <p>About Us</p>
+
+</body>
+{% endblock %}

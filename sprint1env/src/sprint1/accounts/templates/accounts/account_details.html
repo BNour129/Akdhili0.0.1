@@ -1,0 +1,82 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<!-- {% block home %}
+<header>
+  <h1>Hello {{ request.user }}</h1>
+</header>
+{% endblock %} -->
+<div class="container">
+<h1>Please Let Us Know More about You</h1>
+<div class="account-detail">
+    <div class="account">
+        <img src="{{ account.picture.url }}" />
+
+        <form class="" action="{% url 'accounts:details' %}" method="post">
+            {% csrf_token %}
+            <ul>
+              <li>
+                <p>Name </p><h2>{{ account.Name }}</h2>
+              </li>
+              <li>
+                <p>Last Name </p>
+                <h2>{{ account.lastname }}</h2>
+              </li>
+              <li>
+                <p>Account Types </p>
+                <h2>{{ account.account_type }}</h2>
+              </li>
+
+            </ul>
+            <!-- <h3>Written by {{ account.author.username }}</h3> -->
+            <!-- <div class="row">
+                <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+                    <label for="disabled">Disabled</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                   <input id="password" type="password" class="validate">
+                   <label for="password">Password</label>
+                 </div>
+                </div>
+                <div class="row">
+                 <div class="input-field col s12">
+                   <input id="email" type="email" class="validate">
+                   <label for="email">Email</label>
+                 </div>
+                </div>
+                <div class="row">
+                   <div class="col s12">
+                     This is an inline input field:
+                     <div class="input-field inline">
+                       <input id="email_inline" type="email" class="validate">
+                       <label for="email_inline">Email</label>
+                       <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+                     </div>
+                   </div>
+                </div>
+              </form>
+           </div> -->
+
+           <button type="submit" class="btn">Submit</button>
+
+        </form>
+    </div>
+</div>
+</div>
+
+{% endblock %}
